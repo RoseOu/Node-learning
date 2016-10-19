@@ -9,7 +9,7 @@ http.createServer(function (req,res){
     if (name === undefined) name = 'world';
 
     if (name == 'burningbird'){
-        var file = 'phoenix5a.png';
+        var file = 'bird.png';
         fs.stat(file,function(err,stat){
             if (err){
                 console.error(err);

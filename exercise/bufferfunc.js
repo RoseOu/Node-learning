@@ -1,16 +1,24 @@
-//Check the differences between Buffer.toString() and StringDecoder
+/* If the second buffer isn't large enough to hold all of the contents,
+you'll only get the portion of the bytes that fit.*/
+
+var buf01=new Buffer('this is a new buffer with a string');
+var buf02=new Buffer(10);
+buf01.copy(buf02);
+console.log(buf2.toString());
+
+// Result:this is a
 
 
-"use strict";
+/*compare buffer*/
 
-let StringDecoder = require('string_decoder').StringDecoder;
-let decoder = new StringDecoder('utf8');
+var buf1=new Buffer('1 is number one');
+var buf2=new Buffer('2 is number two');
 
-let euro = new Buffer([0xE2, 0x82]);
-let euro2 = new Buffer([0xAC]);
+console.log(buf1.compare(buf2));
 
-console.log(decoder.write(euro));
-console.log(decoder.write(euro2));
+var buf3=new Buffer(buf1.length);
+buf1.copy(buf3);
 
-console.log(euro.toString());
-console.log(euro2.toString());
+console.log(buf1.compare(buf2));  //-1
+console.log(buf2.compare(buf1));  //1
+console.log(buf1.compare(buf3));  //0
